@@ -6,6 +6,7 @@
  */
 
 plugins {
+    id 'java'
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
 }
@@ -23,6 +24,7 @@ dependencies {
     implementation libs.guava
 
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.3'
+    implementation 'org.mindrot:jbcrypt:0.4'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
