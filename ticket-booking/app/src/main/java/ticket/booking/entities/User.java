@@ -38,4 +38,10 @@ public class User {
     public List<Ticket> getTicketsBooked() {
         return ticketsBooked;
     }
+
+    public void printTickets() {
+        for (Ticket ticket: ticketsBooked) {
+            System.out.println(ticket.getTicketInfo());
+        }
+    }
 }

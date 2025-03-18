@@ -3,3 +3,7 @@
 build
 
 .idea
+
+app/bin
+
+app/src/test/test.iml
