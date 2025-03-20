@@ -4,18 +4,18 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ticket.booking.util.UserServiceUtil;
 import ticket.booking.entities.User;
-import ticket.booking.entities.Ticket;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class UserBookingService {
     private User user;
     private List<User> userList;
     private static final ObjectMapper objectMapper = new ObjectMapper();
-    private static final String USERS_PATH = "ticket-booking/app/src/main/java/ticket/booking/localDb/users.json";
+    private static final String USERS_PATH = "app/src/main/java/ticket/booking/localDb/users.json";
 
     public UserBookingService() throws IOException {
         loadUsers();
@@ -34,16 +34,19 @@ public class UserBookingService {
                         UserServiceUtil.checkPassword(user.getPassword(), user1.getHashedPassword()))
                 .findFirst();
 
-        return foundUser.isPresent();
+        if (!foundUser.isPresent()) {
+            return Boolean.FALSE;
+        }
+
+        user = foundUser.get();
+        return Boolean.TRUE;
     }
 
-    public Boolean signUp(User user1) {
+    public void signUp(User user1) {
         try {
             userList.add(user1);
             saveToUserFile();
-            return Boolean.TRUE;
-        } catch (IOException ex) {
-            return Boolean.FALSE;
+        } catch (IOException ignored) {
         }
     }
 
@@ -72,7 +75,18 @@ public class UserBookingService {
 
     private void loadUsers() throws IOException {
         File file = new File(USERS_PATH);
-        userList = objectMapper.readValue(file, new TypeReference<List<User>>() {});
+        if (!file.exists()) {
+            System.out.println("User file not found at path: " + USERS_PATH);
+            userList = new ArrayList<>();
+            return;
+        }
+        try {
+            userList = objectMapper.readValue(file, new TypeReference<List<User>>() {});
+            System.out.println("Loaded users: " + userList);
+        } catch (IOException e) {
+            System.out.println("Error reading user file: " + e.getMessage());
+            throw e;
+        }
     }
 
     private void saveToUserFile() throws IOException {

@@ -5,17 +5,17 @@ package ticket.booking;
 
 import ticket.booking.entities.User;
 import ticket.booking.services.UserBookingService;
+import ticket.booking.util.UserServiceUtil;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println("********** Ticket Booking System ********");
+        System.out.println("********** 🚄 Ticket Booking System 🛤️ **********");
 
         Scanner sc = new Scanner(System.in);
         int option = 0;
@@ -24,7 +24,7 @@ public class App {
         try {
             userBookingService = new UserBookingService();
         } catch (IOException ex) {
-            System.out.println("Error occurred while initializing the service");
+            System.out.println("Error occurred while initializing the service 😟");
             return;
         }
 
@@ -39,9 +39,45 @@ public class App {
             System.out.println("7. Exit the App");
 
             option = sc.nextInt();
+            String userName, password;
 
             switch (option) {
                 case 1:
+                    sc.nextLine();
+                    System.out.println("Enter your Name 🙏");
+                    userName = sc.nextLine();
+
+                    System.out.println("Enter your password 🧑‍💻");
+                    password = sc.next();
+
+                    User newUser = new User(
+                        UUID.randomUUID().toString(),
+                        userName,
+                        password,
+                        UserServiceUtil.hashPassword(password),
+                        new ArrayList<>()
+                    );
+
+                    userBookingService.signUp(newUser);
+                    System.out.println("User signed up successfully 🚀");
+                    break;
+
+                case 2:
+                    sc.nextLine();
+                    System.out.println("Enter your Name 🐣");
+                    userName = sc.nextLine();
+
+                    System.out.println("Enter your password 🗝️");
+                    password = sc.next();
+
+                    if (userBookingService.loginUser()) {
+                        System.out.println("User " + userName + "logged in successfully ✅");
+                    } else {
+                        System.out.println("Uh-hu! Invalid credentials. Please try again ❌");
+                    }
+                    break;
+
+                case 3:
                     break;
 
                 default:
