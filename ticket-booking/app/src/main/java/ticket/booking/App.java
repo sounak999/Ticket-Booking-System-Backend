@@ -3,12 +3,50 @@
  */
 package ticket.booking;
 
+import ticket.booking.entities.User;
+import ticket.booking.services.UserBookingService;
+
+import java.io.IOException;
+import java.util.Scanner;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        System.out.println("********** Ticket Booking System ********");
+
+        Scanner sc = new Scanner(System.in);
+        int option = 0;
+        UserBookingService userBookingService;
+
+        try {
+            userBookingService = new UserBookingService();
+        } catch (IOException ex) {
+            System.out.println("Error occurred while initializing the service");
+            return;
+        }
+
+        while (option != 7) {
+            System.out.println("Choose option");
+            System.out.println("1. Sign up");
+            System.out.println("2. Login");
+            System.out.println("3. Fetch Bookings");
+            System.out.println("4. Search Trains");
+            System.out.println("5. Book a Seat");
+            System.out.println("6. Cancel my Booking");
+            System.out.println("7. Exit the App");
+
+            option = sc.nextInt();
+
+            switch (option) {
+                case 1:
+                    break;
+
+                default:
+                    System.out.println("Invalid option. Please try again!!!");
+            }
+        }
     }
 }

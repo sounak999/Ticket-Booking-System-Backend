@@ -17,10 +17,13 @@ public class UserBookingService {
     private static final ObjectMapper objectMapper = new ObjectMapper();
     private static final String USERS_PATH = "ticket-booking/app/src/main/java/ticket/booking/localDb/users.json";
 
-    UserBookingService(User user) throws IOException {
+    public UserBookingService() throws IOException {
+        loadUsers();
+    }
+
+    public UserBookingService(User user) throws IOException {
         this.user = user;
-        File file = new File(USERS_PATH);
-        userList = objectMapper.readValue(file, new TypeReference<List<User>>() {});
+        loadUsers();
     }
 
     public Boolean loginUser() {
@@ -48,8 +51,28 @@ public class UserBookingService {
         user.printTickets();
     }
 
-    public void cancelBooking(String ticketId) {
-        // Todo: Boolean or void
+    public Boolean cancelBooking(String ticketId) throws IOException {
+        if (ticketId == null || ticketId.isEmpty()) {
+            System.out.println("Ticket Id cannot be null or empty");
+            return Boolean.FALSE;
+        }
+
+        boolean isRemoved = user.getTicketsBooked()
+                .removeIf(ticket -> ticketId.equals(ticket.getTicketId()));
+
+        if (!isRemoved) {
+            System.out.println("No ticket found with ticket id: " + ticketId);
+            return Boolean.FALSE;
+        }
+
+        saveToUserFile();
+        System.out.println("Ticket with ticket id: " + ticketId + " has been cancelled successfully");
+        return Boolean.TRUE;
+    }
+
+    private void loadUsers() throws IOException {
+        File file = new File(USERS_PATH);
+        userList = objectMapper.readValue(file, new TypeReference<List<User>>() {});
     }
 
     private void saveToUserFile() throws IOException {
