@@ -5,84 +5,80 @@ package ticket.booking;
 
 import ticket.booking.entities.User;
 import ticket.booking.services.UserBookingService;
-import ticket.booking.util.UserServiceUtil;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.UUID;
 
 public class App {
 
     public static void main(String[] args) {
-        System.out.println("********** 🚄 Ticket Booking System 🛤️ **********");
-
-        Scanner sc = new Scanner(System.in);
-        int option = 0;
-        UserBookingService userBookingService;
-
         try {
-            userBookingService = new UserBookingService();
-        } catch (IOException ex) {
-            System.out.println("Error occurred while initializing the service 😟");
-            return;
-        }
+            System.out.println("********** 🚄 Ticket Booking System 🛤️ **********");
 
-        while (option != 7) {
-            System.out.println("Choose option");
-            System.out.println("1. Sign up");
-            System.out.println("2. Login");
-            System.out.println("3. Fetch Bookings");
-            System.out.println("4. Search Trains");
-            System.out.println("5. Book a Seat");
-            System.out.println("6. Cancel my Booking");
-            System.out.println("7. Exit the App");
+            Scanner sc = new Scanner(System.in);
+            int option = 0;
+            UserBookingService userBookingService;
 
-            option = sc.nextInt();
-            String userName, password;
-
-            switch (option) {
-                case 1:
-                    sc.nextLine();
-                    System.out.println("Enter your Name 🙏");
-                    userName = sc.nextLine();
-
-                    System.out.println("Enter your password 🧑‍💻");
-                    password = sc.next();
-
-                    User newUser = new User(
-                        UUID.randomUUID().toString(),
-                        userName,
-                        password,
-                        UserServiceUtil.hashPassword(password),
-                        new ArrayList<>()
-                    );
-
-                    userBookingService.signUp(newUser);
-                    System.out.println("User signed up successfully 🚀");
-                    break;
-
-                case 2:
-                    sc.nextLine();
-                    System.out.println("Enter your Name 🐣");
-                    userName = sc.nextLine();
-
-                    System.out.println("Enter your password 🗝️");
-                    password = sc.next();
-
-                    if (userBookingService.loginUser()) {
-                        System.out.println("User " + userName + "logged in successfully ✅");
-                    } else {
-                        System.out.println("Uh-hu! Invalid credentials. Please try again ❌");
-                    }
-                    break;
-
-                case 3:
-                    break;
-
-                default:
-                    System.out.println("Invalid option. Please try again!!!");
+            try {
+                userBookingService = new UserBookingService();
+            } catch (IOException ex) {
+                System.out.println("Error occurred while initializing the service 😟");
+                return;
             }
+
+            while (option != 7) {
+                System.out.println("Choose option");
+                System.out.println("1. Sign up");
+                System.out.println("2. Login");
+                System.out.println("3. Fetch Bookings");
+                System.out.println("4. Search Trains");
+                System.out.println("5. Book a Seat");
+                System.out.println("6. Cancel my Booking");
+                System.out.println("7. Exit the App");
+
+                option = sc.nextInt();
+                String name, password;
+
+                switch (option) {
+                    case 1:
+                        sc.nextLine();
+                        System.out.println("Enter your Name 🙏");
+                        name = sc.nextLine();
+
+                        System.out.println("Enter your password 🧑‍💻");
+                        password = sc.next();
+
+                        User newUser = new User(name, password);
+
+                        userBookingService.signUp(newUser);
+                        System.out.println("User signed up successfully 🚀");
+                        break;
+
+                    case 2:
+                        sc.nextLine();
+                        System.out.println("Enter your Name 🐣");
+                        name = sc.nextLine();
+
+                        System.out.println("Enter your password 🗝️");
+                        password = sc.next();
+
+                        if (userBookingService.loginUser(name, password)) {
+                            System.out.println("User " + name + " logged in successfully ✅");
+                        } else {
+                            System.out.println("Uh-hu! Invalid credentials. Please try again ❌");
+                        }
+                        break;
+
+                    case 3:
+                        break;
+
+                    default:
+                        System.out.println("Invalid option. Please try again!!!");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error: " + e.getLocalizedMessage());
         }
     }
 }

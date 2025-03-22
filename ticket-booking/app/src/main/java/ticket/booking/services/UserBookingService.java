@@ -26,15 +26,15 @@ public class UserBookingService {
         loadUsers();
     }
 
-    public Boolean loginUser() {
+    public Boolean loginUser(String name, String password) {
         Optional<User> foundUser = userList
                 .stream().
-                filter(user1 ->
-                        user1.getName().equalsIgnoreCase(user.getName()) &&
-                        UserServiceUtil.checkPassword(user.getPassword(), user1.getHashedPassword()))
+                filter(user ->
+                        user.getName().equalsIgnoreCase(name) &&
+                        UserServiceUtil.checkPassword(password, user.getHashedPassword()))
                 .findFirst();
 
-        if (!foundUser.isPresent()) {
+        if (foundUser.isEmpty()) {
             return Boolean.FALSE;
         }
 
@@ -82,7 +82,6 @@ public class UserBookingService {
         }
         try {
             userList = objectMapper.readValue(file, new TypeReference<List<User>>() {});
-            System.out.println("Loaded users: " + userList);
         } catch (IOException e) {
             System.out.println("Error reading user file: " + e.getMessage());
             throw e;

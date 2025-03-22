@@ -3,7 +3,7 @@
     "userId": "U001",
     "name": "Rahul Sharma",
     "password": "password123",
-    "hashedPassword": "a152e841783914146e4bcd4f39100686",
+    "hashedPassword": "$2a$10$E8ichE37cL6A5M2yfVJ0e.fwZp8EkVT3di4LQP1fKyXubm0DrYDaa",
     "ticketsBooked": [
       {
         "ticketId": "T001",
@@ -76,7 +76,7 @@
     "userId": "U002",
     "name": "Priya Patel",
     "password": "secure456",
-    "hashedPassword": "7c6a180b36896a0a8c02787eeafb0e4c",
+    "hashedPassword": "$2a$10$SrAmAGy5xUwWWlDbZb.WaO5A5./vN/zjaV2o6gA7Ua.Cj1VuCMfNC",
     "ticketsBooked": [
       {
         "ticketId": "T003",
@@ -119,7 +119,7 @@
     "userId": "U003",
     "name": "Amit Singh",
     "password": "india789",
-    "hashedPassword": "912ec803b2ce49e4a541068d495ab570",
+    "hashedPassword": "$2a$10$ijIW3tv2YrQ7dvlMGj7AAOzJ8.x/taPqeRIQdQSU0Ls0KQma8IIha",
     "ticketsBooked": [
       {
         "ticketId": "T004",

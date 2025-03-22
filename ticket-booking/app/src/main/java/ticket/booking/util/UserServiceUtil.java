@@ -10,4 +10,11 @@ public class UserServiceUtil {
     public static boolean checkPassword(String normalPassword, String hashedPassword) {
         return BCrypt.checkpw(normalPassword, hashedPassword);
     }
+
+    public static void main(String[] args) {
+        String hashedPassword = hashPassword("india789");
+        System.out.println(hashedPassword);
+        System.out.println(checkPassword("password", hashedPassword));
+        System.out.println(checkPassword("india789", hashedPassword));
+    }
 }
