@@ -51,6 +51,10 @@ public class UserBookingService {
     }
 
     public void fetchBooking() {
+        if (user == null) {
+            System.out.println("User has no bookings yet 🤔");
+            return;
+        }
         user.printTickets();
     }
 
@@ -81,7 +85,8 @@ public class UserBookingService {
             return;
         }
         try {
-            userList = objectMapper.readValue(file, new TypeReference<List<User>>() {});
+            userList = objectMapper.readValue(file, new TypeReference<>() {
+            });
         } catch (IOException e) {
             System.out.println("Error reading user file: " + e.getMessage());
             throw e;

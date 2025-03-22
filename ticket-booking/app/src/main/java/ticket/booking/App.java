@@ -51,7 +51,7 @@ public class App {
                         User newUser = new User(name, password);
 
                         userBookingService.signUp(newUser);
-                        System.out.println("User signed up successfully 🚀");
+                        System.out.println("User signed up successfully 🚀\n");
                         break;
 
                     case 2:
@@ -67,9 +67,17 @@ public class App {
                         } else {
                             System.out.println("Uh-hu! Invalid credentials. Please try again ❌");
                         }
+                        System.out.println();
                         break;
 
                     case 3:
+                        System.out.println("Fetching your bookings...");
+                        userBookingService.fetchBooking();
+                        System.out.println();
+                        break;
+
+                    case 4:
+
                         break;
 
                     default:
