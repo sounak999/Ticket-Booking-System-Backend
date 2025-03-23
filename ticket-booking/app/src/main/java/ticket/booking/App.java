@@ -3,10 +3,13 @@
  */
 package ticket.booking;
 
+import ticket.booking.entities.Train;
 import ticket.booking.entities.User;
+import ticket.booking.services.TrainService;
 import ticket.booking.services.UserBookingService;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -37,11 +40,12 @@ public class App {
                 System.out.println("7. Exit the App");
 
                 option = sc.nextInt();
+                sc.nextLine();
                 String name, password;
+                List<Train> matchingTrains = null;
 
                 switch (option) {
                     case 1:
-                        sc.nextLine();
                         System.out.println("Enter your Name 🙏");
                         name = sc.nextLine();
 
@@ -55,7 +59,6 @@ public class App {
                         break;
 
                     case 2:
-                        sc.nextLine();
                         System.out.println("Enter your Name 🐣");
                         name = sc.nextLine();
 
@@ -71,12 +74,20 @@ public class App {
                         break;
 
                     case 3:
-                        System.out.println("Fetching your bookings...");
+                        System.out.println("Fetching your bookings... 🤔");
                         userBookingService.fetchBooking();
                         System.out.println();
                         break;
 
                     case 4:
+                        System.out.println("Enter source station 🚉");
+                        String source = sc.next();
+
+                        System.out.println("Enter destination station 🚉");
+                        String destination = sc.next();
+
+                        matchingTrains = userBookingService.getTrains(source, destination);
+                        TrainService.printTrainDetails(matchingTrains);
 
                         break;
 
@@ -86,7 +97,7 @@ public class App {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Error: " + e.getLocalizedMessage());
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }

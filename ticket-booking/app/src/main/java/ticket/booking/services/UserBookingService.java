@@ -2,6 +2,7 @@ package ticket.booking.services;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ticket.booking.entities.Train;
 import ticket.booking.util.UserServiceUtil;
 import ticket.booking.entities.User;
 
@@ -14,6 +15,7 @@ import java.util.Optional;
 public class UserBookingService {
     private User user;
     private List<User> userList;
+    private List<Train> trainList;
     private static final ObjectMapper objectMapper = new ObjectMapper();
     private static final String USERS_PATH = "app/src/main/java/ticket/booking/localDb/users.json";
 
@@ -58,6 +60,15 @@ public class UserBookingService {
         user.printTickets();
     }
 
+    public List<Train> getTrains(String src, String dest) {
+        try {
+            TrainService trainService = new TrainService();
+            return trainService.searchTrains(src, dest);
+        } catch (IOException ex) {
+            return new ArrayList<>();
+        }
+    }
+
     public Boolean cancelBooking(String ticketId) throws IOException {
         if (ticketId == null || ticketId.isEmpty()) {
             System.out.println("Ticket Id cannot be null or empty");
@@ -80,15 +91,16 @@ public class UserBookingService {
     private void loadUsers() throws IOException {
         File file = new File(USERS_PATH);
         if (!file.exists()) {
-            System.out.println("User file not found at path: " + USERS_PATH);
+            System.out.println("Not a single user was found in the system 😟");
             userList = new ArrayList<>();
             return;
         }
+
         try {
             userList = objectMapper.readValue(file, new TypeReference<>() {
             });
         } catch (IOException e) {
-            System.out.println("Error reading user file: " + e.getMessage());
+            System.out.println("Error occurred while fetching trains 😟 ==> " + e.getMessage());
             throw e;
         }
     }
