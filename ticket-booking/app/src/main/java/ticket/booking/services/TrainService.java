@@ -7,10 +7,9 @@ import ticket.booking.entities.Train;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Time;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class TrainService {
     private List<Train> trainList;
@@ -36,7 +35,7 @@ public class TrainService {
         }
 
         for (Train train: trains) {
-            System.out.println("********** Train Details **********");
+            System.out.println("\n********** Train Details **********\n");
             System.out.println(train.getTrainInfo());
 
             for (Map.Entry<String, Time> entrySet: train.getStationTimes().entrySet()) {
@@ -44,6 +43,20 @@ public class TrainService {
             }
             System.out.println("************************************");
         }
+    }
+
+    public void updateTrain(Train updatedTrain) throws IOException {
+        OptionalInt index = IntStream.range(0, trainList.size())
+                .filter(i -> trainList.get(i).getTrainId().equalsIgnoreCase(updatedTrain.getTrainId()))
+                .findFirst();
+
+        if (index.isPresent()) {
+            trainList.set(index.getAsInt(), updatedTrain);
+            saveToTrainFile();
+        }
+
+        // add train (not going to execute now)
+        trainList.add(updatedTrain);
     }
 
     private boolean validTrainRoute(Train train, String src, String dest) {
@@ -68,5 +81,10 @@ public class TrainService {
             System.out.println("Error occurred while fetching trains 😟 ==> " + e.getMessage());
             throw e;
         }
+    }
+
+    private void saveToTrainFile() throws IOException {
+        File trainsFile = new File(TRAINS_PATH);
+        objectMapper.writeValue(trainsFile, trainList);
     }
 }

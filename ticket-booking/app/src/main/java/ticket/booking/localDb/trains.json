@@ -1,85 +1,190 @@
 [
   {
-    "trainId": "TR001",
-    "trainNo": "12951",
-    "seats": [
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0]
-    ],
-    "stationTimes": {
-      "mumbai": "08:30:00",
-      "surat": "11:45:00",
-      "vadodara": "13:20:00",
-      "ratlam": "16:30:00",
-      "kota": "19:45:00",
-      "delhi": "23:15:00"
-    },
-    "stations": [
-      "mumbai",
-      "surat",
-      "vadodara",
-      "ratlam",
-      "kota",
-      "delhi"
+    "userId": "U001",
+    "name": "Rahul Sharma",
+    "password": "password123",
+    "hashedPassword": "$2a$10$E8ichE37cL6A5M2yfVJ0e.fwZp8EkVT3di4LQP1fKyXubm0DrYDaa",
+    "ticketsBooked": [
+      {
+        "ticketId": "T001",
+        "userId": "U001",
+        "source": "mumbai",
+        "destination": "delhi",
+        "dateOfTravel": "2025-04-10T08:30:00",
+        "train": {
+          "trainId": "TR001",
+          "trainNo": "12951",
+          "seats": [
+            [0, 0, 0, 0, 1, 0],
+            [0, 0, 0, 0, 0, 0],
+            [1, 0, 0, 0, 0, 1]
+          ],
+          "stationTimes": {
+            "mumbai": "08:30:00",
+            "surat": "11:45:00",
+            "vadodara": "13:20:00",
+            "ratlam": "16:30:00",
+            "kota": "19:45:00",
+            "delhi": "23:15:00"
+          },
+          "stations": [
+            "mumbai",
+            "surat",
+            "vadodara",
+            "ratlam",
+            "kota",
+            "delhi"
+          ]
+        }
+      },
+      {
+        "ticketId": "T002",
+        "userId": "U001",
+        "source": "bangalore",
+        "destination": "chennai",
+        "dateOfTravel": "2025-05-15T16:00:00",
+        "train": {
+          "trainId": "TR004",
+          "trainNo": "12028",
+          "seats": [
+            [1, 0, 1, 0, 0, 0],
+            [0, 0, 1, 0, 0, 1],
+            [0, 1, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0]
+          ],
+          "stationTimes": {
+            "bangalore": "16:00:00",
+            "krishnarajapuram": "16:35:00",
+            "whitefield": "17:00:00",
+            "jolarpettai": "19:15:00",
+            "katpadi": "20:45:00",
+            "chennai": "22:30:00"
+          },
+          "stations": [
+            "bangalore",
+            "krishnarajapuram",
+            "whitefield",
+            "jolarpettai",
+            "katpadi",
+            "chennai"
+          ]
+        }
+      }
     ]
   },
   {
-    "trainId": "TR002",
-    "trainNo": "12302",
-    "seats": [
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0]
-    ],
-    "stationTimes": {
-      "kolkata": "22:05:00",
-      "durgapur": "00:10:00",
-      "asansol": "01:00:00",
-      "dhanbad": "02:20:00",
-      "gaya": "04:35:00",
-      "patna": "07:15:00"
-    },
-    "stations": [
-      "kolkata",
-      "durgapur",
-      "asansol",
-      "dhanbad",
-      "gaya",
-      "patna"
+    "userId": "U002",
+    "name": "Priya Patel",
+    "password": "secure456",
+    "hashedPassword": "$2a$10$SrAmAGy5xUwWWlDbZb.WaO5A5./vN/zjaV2o6gA7Ua.Cj1VuCMfNC",
+    "ticketsBooked": [
+      {
+        "ticketId": "T003",
+        "userId": "U002",
+        "source": "kolkata",
+        "destination": "patna",
+        "dateOfTravel": "2025-03-25T22:05:00",
+        "train": {
+          "trainId": "TR002",
+          "trainNo": "12302",
+          "seats": [
+            [0, 0, 0, 1, 0],
+            [0, 0, 0, 1, 0],
+            [1, 0, 0, 0, 0],
+            [1, 0, 0, 0, 0],
+            [0, 0, 1, 0, 0],
+            [0, 0, 1, 0, 0]
+          ],
+          "stationTimes": {
+            "kolkata": "22:05:00",
+            "durgapur": "00:10:00",
+            "asansol": "01:00:00",
+            "dhanbad": "02:20:00",
+            "gaya": "04:35:00",
+            "patna": "07:15:00"
+          },
+          "stations": [
+            "kolkata",
+            "durgapur",
+            "asansol",
+            "dhanbad",
+            "gaya",
+            "patna"
+          ]
+        }
+      }
     ]
   },
   {
-    "trainId": "TR003",
-    "trainNo": "12957",
-    "seats": [
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0]
-    ],
-    "stationTimes": {
-      "chennai": "06:10:00",
-      "vijayawada": "10:45:00",
-      "warangal": "13:20:00",
-      "secunderabad": "15:45:00",
-      "nagpur": "20:30:00",
-      "bhopal": "01:15:00",
-      "delhi": "08:40:00"
-    },
-    "stations": [
-      "chennai",
-      "vijayawada",
-      "warangal",
-      "secunderabad",
-      "nagpur",
-      "bhopal",
-      "delhi"
+    "userId": "U003",
+    "name": "Amit Singh",
+    "password": "india789",
+    "hashedPassword": "$2a$10$ijIW3tv2YrQ7dvlMGj7AAOzJ8.x/taPqeRIQdQSU0Ls0KQma8IIha",
+    "ticketsBooked": [
+      {
+        "ticketId": "T004",
+        "userId": "U003",
+        "source": "jaipur",
+        "destination": "ahmedabad",
+        "dateOfTravel": "2025-04-05T07:20:00",
+        "train": {
+          "trainId": "TR003",
+          "trainNo": "12958",
+          "seats": [
+            [1, 1, 0, 0, 0, 0],
+            [0, 0, 0, 1, 1, 0],
+            [0, 0, 1, 0, 0, 0]
+          ],
+          "stationTimes": {
+            "jaipur": "07:20:00",
+            "ajmer": "09:05:00",
+            "marwar": "11:20:00",
+            "falna": "12:45:00",
+            "abu road": "14:10:00",
+            "ahmedabad": "17:45:00"
+          },
+          "stations": [
+            "jaipur",
+            "ajmer",
+            "marwar",
+            "falna",
+            "abu road",
+            "ahmedabad"
+          ]
+        }
+      },
+      {
+        "ticketId": "T005",
+        "userId": "U003",
+        "source": "hyderabad",
+        "destination": "vijayawada",
+        "dateOfTravel": "2025-05-20T15:45:00",
+        "train": {
+          "trainId": "TR005",
+          "trainNo": "12723",
+          "seats": [
+            [0, 0, 1, 0, 0, 0],
+            [0, 1, 0, 0, 0, 1],
+            [1, 0, 0, 0, 1, 0]
+          ],
+          "stationTimes": {
+            "hyderabad": "15:45:00",
+            "secunderabad": "16:15:00",
+            "kazipet": "18:30:00",
+            "warangal": "19:15:00",
+            "khammam": "20:45:00",
+            "vijayawada": "23:20:00"
+          },
+          "stations": [
+            "hyderabad",
+            "secunderabad",
+            "kazipet",
+            "warangal",
+            "khammam",
+            "vijayawada"
+          ]
+        }
+      }
     ]
   }
 ]

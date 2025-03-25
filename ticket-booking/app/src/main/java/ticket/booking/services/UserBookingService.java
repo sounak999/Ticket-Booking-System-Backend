@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class UserBookingService {
+    private final TrainService trainService;
     private User user;
     private List<User> userList;
     private List<Train> trainList;
@@ -20,11 +21,13 @@ public class UserBookingService {
     private static final String USERS_PATH = "app/src/main/java/ticket/booking/localDb/users.json";
 
     public UserBookingService() throws IOException {
+        trainService = new TrainService();
         loadUsers();
     }
 
     public UserBookingService(User user) throws IOException {
         this.user = user;
+        this.trainService = new TrainService();
         loadUsers();
     }
 
@@ -61,12 +64,37 @@ public class UserBookingService {
     }
 
     public List<Train> getTrains(String src, String dest) {
-        try {
-            TrainService trainService = new TrainService();
-            return trainService.searchTrains(src, dest);
-        } catch (IOException ex) {
-            return new ArrayList<>();
+        this.trainList = trainService.searchTrains(src, dest);
+        return trainList;
+    }
+
+    public List<List<Integer>> fetchSeats(Train train) {
+        return train.getSeats();
+    }
+
+    public Boolean bookSeat(Train train, int row, int col) throws IOException {
+        if (train == null) {
+            System.out.println("Train cannot be null");
+            return Boolean.FALSE;
         }
+
+        int totalRows = train.getSeats().size();
+        int totalCols = train.getSeats().get(0).size();
+        if (row < 1 || row > totalRows || col < 1 || col > totalCols) {
+            System.out.println("Invalid row or column number");
+            return Boolean.FALSE;
+        }
+
+        List<List<Integer>> seats = train.getSeats();
+        if (seats.get(row - 1).get(col - 1) == 1) {
+            System.out.println("Seat is already booked");
+            return Boolean.FALSE;
+        }
+
+        seats.get(row - 1).set(col - 1, 1);
+        train.setSeats(seats);
+        trainService.updateTrain(train);
+        return Boolean.TRUE;
     }
 
     public Boolean cancelBooking(String ticketId) throws IOException {

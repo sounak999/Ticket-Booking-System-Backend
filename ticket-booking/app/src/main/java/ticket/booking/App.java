@@ -18,8 +18,6 @@ public class App {
         try {
             System.out.println("********** 🚄 Ticket Booking System 🛤️ **********");
 
-            Scanner sc = new Scanner(System.in);
-            int option = 0;
             UserBookingService userBookingService;
 
             try {
@@ -28,6 +26,10 @@ public class App {
                 System.out.println("Error occurred while initializing the service 😟");
                 return;
             }
+
+            Scanner sc = new Scanner(System.in);
+            int option = 0;
+            List<Train> matchingTrains = null;
 
             while (option != 7) {
                 System.out.println("Choose option");
@@ -42,7 +44,6 @@ public class App {
                 option = sc.nextInt();
                 sc.nextLine();
                 String name, password;
-                List<Train> matchingTrains = null;
 
                 switch (option) {
                     case 1:
@@ -55,7 +56,7 @@ public class App {
                         User newUser = new User(name, password);
 
                         userBookingService.signUp(newUser);
-                        System.out.println("User signed up successfully 🚀\n");
+                        System.out.println("\nUser signed up successfully 🚀\n");
                         break;
 
                     case 2:
@@ -66,11 +67,10 @@ public class App {
                         password = sc.next();
 
                         if (userBookingService.loginUser(name, password)) {
-                            System.out.println("User " + name + " logged in successfully ✅");
+                            System.out.println("\nUser " + name + " logged in successfully ✅\n");
                         } else {
-                            System.out.println("Uh-hu! Invalid credentials. Please try again ❌");
+                            System.out.println("\nUh-hu! Invalid credentials. Please try again ❌\n");
                         }
-                        System.out.println();
                         break;
 
                     case 3:
@@ -88,6 +88,44 @@ public class App {
 
                         matchingTrains = userBookingService.getTrains(source, destination);
                         TrainService.printTrainDetails(matchingTrains);
+
+                        break;
+
+                    case 5:
+                        if (matchingTrains == null) {
+                            System.out.println("Please search for trains first (Press 4️⃣) 🚉");
+                            break;
+                        }
+
+                        System.out.println("Enter the train number you want to book a seat in (1, 2, 3...) 🚉");
+                        int trainNumber = sc.nextInt();
+                        while (trainNumber < 1 || trainNumber > matchingTrains.size()) {
+                            System.out.println("Invalid train number. Please try again!!!");
+                            trainNumber = sc.nextInt();
+                        }
+
+                        Train train = matchingTrains.get(trainNumber - 1);
+                        System.out.println("Seat availability for the selected train 💺");
+                        List<List<Integer>> lists = userBookingService.fetchSeats(train);
+
+                        for (List<Integer> list: lists) {
+                            System.out.println(list);
+                        }
+
+                        System.out.println("Select the seat by typing the row and column");
+                        System.out.println("Enter row number");
+                        int row = sc.nextInt();
+                        System.out.println("Enter column number");
+                        int column = sc.nextInt();
+
+                        System.out.println("Booking your seat...");
+
+                        Boolean booked = userBookingService.bookSeat(matchingTrains.get(trainNumber - 1), row, column);
+                        if (booked.equals(Boolean.TRUE)) {
+                            System.out.println("Seat booked successfully 🎉");
+                        } else {
+                            System.out.println("Seat booking failed 😟");
+                        }
 
                         break;
 

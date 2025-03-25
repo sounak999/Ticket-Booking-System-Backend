@@ -8,8 +8,8 @@
       {
         "ticketId": "T001",
         "userId": "U001",
-        "source": "Mumbai",
-        "destination": "New Delhi",
+        "source": "mumbai",
+        "destination": "delhi",
         "dateOfTravel": "2025-04-10T08:30:00",
         "train": {
           "trainId": "TR001",
@@ -20,28 +20,28 @@
             [1, 0, 0, 0, 0, 1]
           ],
           "stationTimes": {
-            "Mumbai": "08:30:00",
-            "Surat": "11:45:00",
-            "Vadodara": "13:20:00",
-            "Ratlam": "16:30:00",
-            "Kota": "19:45:00",
-            "New Delhi": "23:15:00"
+            "mumbai": "08:30:00",
+            "surat": "11:45:00",
+            "vadodara": "13:20:00",
+            "ratlam": "16:30:00",
+            "kota": "19:45:00",
+            "delhi": "23:15:00"
           },
           "stations": [
-            "Mumbai",
-            "Surat",
-            "Vadodara",
-            "Ratlam",
-            "Kota",
-            "New Delhi"
+            "mumbai",
+            "surat",
+            "vadodara",
+            "ratlam",
+            "kota",
+            "delhi"
           ]
         }
       },
       {
         "ticketId": "T002",
         "userId": "U001",
-        "source": "Bangalore",
-        "destination": "Chennai",
+        "source": "bangalore",
+        "destination": "chennai",
         "dateOfTravel": "2025-05-15T16:00:00",
         "train": {
           "trainId": "TR004",
@@ -53,20 +53,20 @@
             [0, 0, 0, 0, 0, 0]
           ],
           "stationTimes": {
-            "Bangalore": "16:00:00",
-            "Krishnarajapuram": "16:35:00",
-            "Whitefield": "17:00:00",
-            "Jolarpettai": "19:15:00",
-            "Katpadi": "20:45:00",
-            "Chennai": "22:30:00"
+            "bangalore": "16:00:00",
+            "krishnarajapuram": "16:35:00",
+            "whitefield": "17:00:00",
+            "jolarpettai": "19:15:00",
+            "katpadi": "20:45:00",
+            "chennai": "22:30:00"
           },
           "stations": [
-            "Bangalore",
-            "Krishnarajapuram",
-            "Whitefield",
-            "Jolarpettai",
-            "Katpadi",
-            "Chennai"
+            "bangalore",
+            "krishnarajapuram",
+            "whitefield",
+            "jolarpettai",
+            "katpadi",
+            "chennai"
           ]
         }
       }
@@ -81,8 +81,8 @@
       {
         "ticketId": "T003",
         "userId": "U002",
-        "source": "Kolkata",
-        "destination": "Patna",
+        "source": "kolkata",
+        "destination": "patna",
         "dateOfTravel": "2025-03-25T22:05:00",
         "train": {
           "trainId": "TR002",
@@ -96,20 +96,20 @@
             [0, 0, 1, 0, 0]
           ],
           "stationTimes": {
-            "Kolkata Kolkata": "22:05:00",
-            "Durgapur": "00:10:00",
-            "Asansol": "01:00:00",
-            "Dhanbad": "02:20:00",
-            "Gaya": "04:35:00",
-            "Patna": "07:15:00"
+            "kolkata": "22:05:00",
+            "durgapur": "00:10:00",
+            "asansol": "01:00:00",
+            "dhanbad": "02:20:00",
+            "gaya": "04:35:00",
+            "patna": "07:15:00"
           },
           "stations": [
-            "Kolkata",
-            "Durgapur",
-            "Asansol",
-            "Dhanbad",
-            "Gaya",
-            "Patna"
+            "kolkata",
+            "durgapur",
+            "asansol",
+            "dhanbad",
+            "gaya",
+            "patna"
           ]
         }
       }
@@ -124,8 +124,8 @@
       {
         "ticketId": "T004",
         "userId": "U003",
-        "source": "Jaipur",
-        "destination": "Ahmedabad",
+        "source": "jaipur",
+        "destination": "ahmedabad",
         "dateOfTravel": "2025-04-05T07:20:00",
         "train": {
           "trainId": "TR003",
@@ -136,28 +136,28 @@
             [0, 0, 1, 0, 0, 0]
           ],
           "stationTimes": {
-            "Jaipur": "07:20:00",
-            "Ajmer": "09:05:00",
-            "Marwar": "11:20:00",
-            "Falna": "12:45:00",
-            "Abu Road": "14:10:00",
-            "Ahmedabad": "17:45:00"
+            "jaipur": "07:20:00",
+            "ajmer": "09:05:00",
+            "marwar": "11:20:00",
+            "falna": "12:45:00",
+            "abu road": "14:10:00",
+            "ahmedabad": "17:45:00"
           },
           "stations": [
-            "Jaipur",
-            "Ajmer",
-            "Marwar",
-            "Falna",
-            "Abu Road",
-            "Ahmedabad"
+            "jaipur",
+            "ajmer",
+            "marwar",
+            "falna",
+            "abu road",
+            "ahmedabad"
           ]
         }
       },
       {
         "ticketId": "T005",
         "userId": "U003",
-        "source": "Hyderabad",
-        "destination": "Vijayawada",
+        "source": "hyderabad",
+        "destination": "vijayawada",
         "dateOfTravel": "2025-05-20T15:45:00",
         "train": {
           "trainId": "TR005",
@@ -168,20 +168,20 @@
             [1, 0, 0, 0, 1, 0]
           ],
           "stationTimes": {
-            "Hyderabad": "15:45:00",
-            "Secunderabad": "16:15:00",
-            "Kazipet": "18:30:00",
-            "Warangal": "19:15:00",
-            "Khammam": "20:45:00",
-            "Vijayawada": "23:20:00"
+            "hyderabad": "15:45:00",
+            "secunderabad": "16:15:00",
+            "kazipet": "18:30:00",
+            "warangal": "19:15:00",
+            "khammam": "20:45:00",
+            "vijayawada": "23:20:00"
           },
           "stations": [
-            "Hyderabad",
-            "Secunderabad",
-            "Kazipet",
-            "Warangal",
-            "Khammam",
-            "Vijayawada"
+            "hyderabad",
+            "secunderabad",
+            "kazipet",
+            "warangal",
+            "khammam",
+            "vijayawada"
           ]
         }
       }
